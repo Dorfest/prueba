@@ -110,96 +110,98 @@ public class EjercicioPokemon {
 	}
 	
 	// CASE 9
-	private static void lucha2(String[] nombre, String[] tipo, int[] nivel, int[] ataque, int[] defensa,
-			int[] velocidad, Scanner sc) {
+			private static void lucha2(String[] nombre, String[] tipo, int[] nivel, int[] ataque, int[] defensa,
+					int[] velocidad, Scanner sc) {
 
-		
-		System.out.println("Introduce el pokemon que va a pelear: ");
-		String pokemon1 = sc.next();
-		String pokemon2 = nombre[(int) (Math.random() * 19)];
-		System.out.println("¡Tu " + pokemon1 + " va a pelear contra " + pokemon2 + "!");
-		
-		int pokemon1Media = 0;
-		int pokemon2Media = 0;
-		
-		// POKEMON 1 MEDIA
-		for (int i = 0; i < nombre[i].length(); i++) {
-			if(pokemon1.toUpperCase().equals(nombre[i].toUpperCase())) {
-				pokemon1Media = nivel[i] + ataque[i] + defensa [i] + velocidad [i];
-			}
-			else {}
-		}
-		//POKEMON 2 MEDIA
-		for (int i = 0; i < nombre[i].length(); i++) {
-			if(pokemon2.toUpperCase().equals(nombre[i].toUpperCase())) {
-				pokemon2Media = nivel[i] + ataque[i] + defensa [i] + velocidad [i];
-			}
-			else {}
-		}
-		if(pokemon1Media>pokemon2Media) {
-			System.out.println("¡" + pokemon1 + " ha ganado!");
-			
-			for (int i = 0; i < nombre[i].length(); i++) {
-				if(pokemon2.toUpperCase().equals(nombre[i].toUpperCase())) {
-					
-				// MOSTRAR ESTADISTICAS ANTIGUAS
-					System.out.println("Las antiguas estadisticas del Pokemon enemigo eran: ");
-					System.out.println("Nivel: " + nivel[i]);
-					System.out.println("Ataque: " + ataque[i]);
-					System.out.println("Defensa: " + defensa[i]);
-					System.out.println("Velocidad: " + velocidad[i]);
-					System.out.println("");
-					
-				//GENERAR ESTADISTICAS ALEATORIAS
-					nivel[i] = (int) (Math.random() * Integer.MAX_VALUE);
-					ataque[i] = (int) (Math.random() * Integer.MAX_VALUE);
-					defensa [i] = (int) (Math.random() * Integer.MAX_VALUE);
-					velocidad [i] = (int) (Math.random() * Integer.MAX_VALUE);
 				
-				// MOSTRAR ESTADISTICAS NUEVAS
-					System.out.println("Las nuevas estadisticas de tu Pokemon son: ");
-					System.out.println("Nivel: " + nivel[i]);
-					System.out.println("Ataque: " + ataque[i]);
-					System.out.println("Defensa: " + defensa[i]);
-					System.out.println("Velocidad: " + velocidad[i]);
-					System.out.println("");
-					break;
+				System.out.println("Introduce el pokemon que va a pelear: ");
+				String pokemon1 = sc.next();
+				String pokemon2 = nombre[(int) (Math.random() * 19)];
+				System.out.println("¡Tu " + pokemon1 + " va a pelear contra " + pokemon2 + "!");
+				
+				int pokemon1Media = 0;
+				int pokemon2Media = 0;
+				
+				// POKEMON 1 MEDIA
+				for (int i = 0; i < nombre.length; i++) {
+					if(pokemon1.equalsIgnoreCase(nombre[i])) {
+						pokemon1Media = nivel[i] + ataque[i] + defensa [i] + velocidad [i];
+						pokemon1Media = pokemon1Media/4;
+					}
+					else {}
 				}
-				else {}
-			}
-		}
-		else {
-			System.out.println("¡" + pokemon2 + " ha ganado!");
-			for (int i = 0; i < nombre[i].length(); i++) {
-				if(pokemon1.toUpperCase().equals(nombre[i].toUpperCase())) {
-					
-				//MOSTRAR ESTADISTICAS ANTIGUAS
-					System.out.println("Las antiguas estadisticas de tu Pokemon eran: ");
-					System.out.println("Nivel: " + nivel[i]);
-					System.out.println("Ataque: " + ataque[i]);
-					System.out.println("Defensa: " + defensa[i]);
-					System.out.println("Velocidad: " + velocidad[i]);
-					System.out.println("");
-					
-				//GENERAR ESTADISTICAS ALEATORIAS
-					nivel[i] = (int) (Math.random() * Integer.MAX_VALUE);
-					ataque[i] = (int) (Math.random() * Integer.MAX_VALUE);
-					defensa [i] = (int) (Math.random() * Integer.MAX_VALUE);
-					velocidad [i] = (int) (Math.random() * Integer.MAX_VALUE);
-					
-				// MOSTRAR ESTADISTICAS NUEVAS
-					System.out.println("Las nuevas estadisticas de tu Pokemon son: ");
-					System.out.println("Nivel: " + nivel[i]);
-					System.out.println("Ataque: " + ataque[i]);
-					System.out.println("Defensa: " + defensa[i]);
-					System.out.println("Velocidad: " + velocidad[i]);
-					System.out.println("");
-					break;
+				//POKEMON 2 MEDIA
+				for (int i = 0; i < nombre.length; i++) {
+					if(pokemon2.toUpperCase().equals(nombre[i].toUpperCase())) {
+						pokemon2Media = nivel[i] + ataque[i] + defensa [i] + velocidad [i];
+						pokemon2Media = pokemon2Media/4;
+					}
+					else {}
 				}
-				else {}
+
+				if(pokemon1Media>pokemon2Media) {
+					System.out.println("¡" + pokemon1 + " ha ganado!");
+					
+					for (int i = 0; i < nombre.length; i++) {
+
+						if(pokemon2.equalsIgnoreCase(nombre[i])) {
+						// MOSTRAR ESTADISTICAS ANTIGUAS
+							System.out.println("Las antiguas estadisticas del " + pokemon2 +" enemigo eran: ");
+							System.out.println("Nivel: " + nivel[i]);
+							System.out.println("Ataque: " + ataque[i]);
+							System.out.println("Defensa: " + defensa[i]);
+							System.out.println("Velocidad: " + velocidad[i]);
+							System.out.println("");
+							
+						//GENERAR ESTADISTICAS ALEATORIAS
+							nivel[i] = (int) (Math.random() * 255);
+							ataque[i] = (int) (Math.random() * 255);
+							defensa [i] = (int) (Math.random() * 255);
+							velocidad [i] = (int) (Math.random() * 255);
+						
+						// MOSTRAR ESTADISTICAS NUEVAS
+							System.out.println("Las nuevas estadisticas del " + pokemon2 + " enemigo son: ");
+							System.out.println("Nivel: " + nivel[i]);
+							System.out.println("Ataque: " + ataque[i]);
+							System.out.println("Defensa: " + defensa[i]);
+							System.out.println("Velocidad: " + velocidad[i]);
+							System.out.println("");
+						}
+						else {}
+					}
+				}
+				else {
+					System.out.println("¡" + pokemon2 + " ha ganado!");
+					for (int i = 0; i < nombre.length; i++) {
+						if(pokemon1.equalsIgnoreCase(nombre[i])) {
+							
+						//MOSTRAR ESTADISTICAS ANTIGUAS
+							System.out.println("Las antiguas estadisticas de tu " + pokemon1 +" eran: ");
+							System.out.println("Nivel: " + nivel[i]);
+							System.out.println("Ataque: " + ataque[i]);
+							System.out.println("Defensa: " + defensa[i]);
+							System.out.println("Velocidad: " + velocidad[i]);
+							System.out.println("");
+							
+						//GENERAR ESTADISTICAS ALEATORIAS
+							nivel[i] = (int) (Math.random() * 255);
+							ataque[i] = (int) (Math.random() * 255);
+							defensa [i] = (int) (Math.random() * 255);
+							velocidad [i] = (int) (Math.random() * 255);
+							
+						// MOSTRAR ESTADISTICAS NUEVAS
+							System.out.println("Las nuevas estadisticas de tu " + pokemon1 +" son: ");
+							System.out.println("Nivel: " + nivel[i]);
+							System.out.println("Ataque: " + ataque[i]);
+							System.out.println("Defensa: " + defensa[i]);
+							System.out.println("Velocidad: " + velocidad[i]);
+							System.out.println("");
+							break;
+						}
+						else {}
+					}
+				}
 			}
-		}
-	}
 
 	// CASE 8
 	private static void lucha1(String[] nombre, String[] tipo, int[] nivel, int[] ataque, int[] defensa,
